@@ -1,0 +1,67 @@
+<html>
+    <head>
+		<meta charset="UTF-8">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Manipulating Tags</title>
+    </head>
+    <body>
+    	<div class="container pt-5">
+    		<div class="row">
+    			<div class="col text-center">
+    				<button id="toggleButton" class="btn btn-primary" onclick="toggleStateFunction()">Here</button>
+    			</div>
+    		</div>
+    		<div class="row mt-4">
+    			<div class="col text-center">
+    				<button class="btn btn-primary" onclick="addElement()">Add</button>
+    				<button class="btn btn-danger" onclick="removeElement()">Remove</button>
+    			</div>
+    		</div>
+    		<div class="row mt-4">
+    			<div class="col text-center" id="addHere">
+    			</div>
+    		</div>
+    	</div>
+
+    	<script type="text/javascript">
+
+    		var toggleState = 0
+
+    		function addElement(){
+    			var parentElement = document.getElementById("addHere")
+    			var newElement = document.createElement("button")
+    			newElement.classList.add("btn")
+    			newElement.classList.add("btn-primary")
+    			newElement.innerHTML = "NewButton"
+    			parentElement.appendChild(newElement)
+    		}
+
+    		function removeElement(){
+    			var parentElement = document.getElementById("addHere")
+    			if(parentElement.childNodes.length!=0)
+	    			parentElement.removeChild(parentElement.childNodes[0])
+    		}
+
+    		function toggleStateFunction(){
+
+    			var myButton = document.getElementById('toggleButton')
+
+    			if(toggleState == 0){
+    				myButton.innerHTML = "There"
+    				myButton.classList.remove("btn-primary")
+    				myButton.classList.add("btn-danger")
+    				toggleState = 1
+    			}
+    			else{
+    				myButton.innerHTML = "Here"
+    				myButton.classList.remove("btn-danger")
+    				myButton.classList.add("btn-primary")
+    				toggleState = 0
+    			}
+    		}
+    	</script>
+    </body>
+</html>
