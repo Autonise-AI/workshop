@@ -1,0 +1,9 @@
+<div class="shadow row bg-light mb-5 mt-4 mx-1">
+  <a href="{{imgLink}}"><img src="{{img}}" width="100%"></a>
+  <div class="px-4 pt-5 pb-4">
+    <a class="hrefWithoutDecoration" href="{{headerLink}}" target="_blank"><h2>{{header}} <i class="fa fa-external-link" style="font-size:12px"></i></h2></a>
+    <p>Last Updated: {{lastUpdated}}</p>
+    <p [innerHTML]="content"></p>
+    <button type="button" class="btn btn-light btn-outline-dark" (click)="evaluate()">{{button}}</button>
+  </div>
+</div>
