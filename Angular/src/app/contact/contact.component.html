@@ -1,0 +1,14 @@
+<div class="shadow row bg-light mb-5 mt-4 mx-1">
+  <div class="col">
+    <form>
+      <h5 class="pt-3">Email address</h5>
+      <input required [(ngModel)]="emailID" type="email" placeholder="name@example.com" name="email">
+      <h5 class="pt-3">Message</h5>
+      <textarea rows="8" class="fullwidth" name="message" [(ngModel)]="content"></textarea>
+      <p class="text-danger" *ngIf="errorMessageEmpty">Message is Empty</p>
+      <p class="text-danger" *ngIf="errorEmailEmpty">Email is Empty</p>
+      <button type="submit" class="btn btn-primary mt-3" (click)="submitForm()">Submit</button>
+    </form>
+  </div>
+
+</div>

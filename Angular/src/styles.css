@@ -8,3 +8,4 @@ body{
 .hrefWithoutDecoration {text-decoration: none !important; color:black !important;}
 .activeCustom {color:#FFF}
 .inactiveCustom {color:#A9A9A9}
+.fullwidth {width: 100%;}

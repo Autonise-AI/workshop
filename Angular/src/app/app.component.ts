@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Event, NavigationEnd } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,8 +10,8 @@ export class AppComponent {
   title = 'Mayank Kumar Singh';
   active = null;
   constructor(router: Router) {
-    router.events.forEach((event) => {
-      if (event.url !== undefined){
+    router.events.forEach((event: Event) => {
+      if (event instanceof NavigationEnd ){
         this.active = event.url;
       }
       // if (event instanceof NavigationStart) {

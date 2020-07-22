@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { ResearchComponent } from './research/research.component';
 import { LatestComponent } from './latest/latest.component';
 import { ProjectComponent } from './project/project.component';
-import { PublicationComponent } from './publication/publication.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'research', component: ResearchComponent },
   { path: 'latest', component: LatestComponent },
   { path: 'projects', component: ProjectComponent },
-  { path: 'publication', component: PublicationComponent },
+  { path: 'contact', component: ContactComponent },
 ];
 
 @NgModule({

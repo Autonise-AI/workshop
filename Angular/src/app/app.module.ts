@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,9 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { ResearchComponent } from './research/research.component';
 import { LatestComponent } from './latest/latest.component';
 import { ProjectComponent } from './project/project.component';
-import { PublicationComponent } from './publication/publication.component';
 import { SafeHtmlPipe } from './safe-html.pipe';
-
+import { ContactComponent } from './contact/contact.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,12 +21,13 @@ import { SafeHtmlPipe } from './safe-html.pipe';
     ResearchComponent,
     LatestComponent,
     ProjectComponent,
-    PublicationComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
