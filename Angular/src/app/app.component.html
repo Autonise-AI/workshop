@@ -11,26 +11,32 @@
 				<div class="col-xl-6">
 					<div class="row">
 						<div class="col">
-							<a class="nav-link onHoverDark activeCustom" href="/">Home</a>
+							<a class="nav-link onHoverDark activeCustom" href="/" *ngIf="active === '/home'">Home</a>
+							<a class="nav-link onHoverDark inactiveCustom" href="/" *ngIf="active !== '/home'">Home</a>
 						</div>
 						<div class="col">
-							<a class="nav-link onHoverDark inactiveCustom" href="/profile">Profile</a>
+							<a class="nav-link onHoverDark activeCustom" href="/profile" *ngIf="active === '/profile'">Profile</a>
+							<a class="nav-link onHoverDark inactiveCustom" href="/profile" *ngIf="active !== '/profile'">Profile</a>
 						</div>
 						<div class="col">
-							<a class="nav-link onHoverDark inactiveCustom" href="/research">Research</a>
+							<a class="nav-link onHoverDark activeCustom" href="/research" *ngIf="active === '/research'">Research</a>
+							<a class="nav-link onHoverDark inactiveCustom" href="/research" *ngIf="active !== '/research'">Research</a>
 						</div>
 					</div>
 				</div>
 				<div class="col-xl-6">
 					<div class="row">
 						<div class="col">
-							<a class="nav-link onHoverDark inactiveCustom" href="/latest">Latest</a>
+							<a class="nav-link onHoverDark activeCustom" href="/latest" *ngIf="active === '/latest'">Latest</a>
+							<a class="nav-link onHoverDark inactiveCustom" href="/latest" *ngIf="active !== '/latest'">Latest</a>
 						</div>
 						<div class="col">
-							<a class="nav-link onHoverDark inactiveCustom" href="/projects">Project</a>
+							<a class="nav-link onHoverDark activeCustom" href="/projects" *ngIf="active === '/projects'">Project</a>
+							<a class="nav-link onHoverDark inactiveCustom" href="/projects" *ngIf="active !== '/projects'">Project</a>
 						</div>
 						<div class="col">
-							<a class="nav-link onHoverDark inactiveCustom" href="/publications">Publication</a>
+							<a class="nav-link onHoverDark activeCustom" href="/publications" *ngIf="active === '/publications'">Publication</a>
+							<a class="nav-link onHoverDark inactiveCustom" href="/publications" *ngIf="active !== '/publications'">Publication</a>
 						</div>
 					</div>
 				</div>

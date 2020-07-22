@@ -8,8 +8,11 @@ import {AllContentService} from '../all-content.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public allContents: AllContentService) { }
+  homeContent = null;
 
+  constructor(public allContents: AllContentService) {
+    this.homeContent = allContents.getHomeContent();
+  }
   ngOnInit(): void {
   }
 
