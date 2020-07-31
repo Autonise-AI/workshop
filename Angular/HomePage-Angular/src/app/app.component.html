@@ -1,0 +1,80 @@
+<div class="container pt-5 pb-3">
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="row pb-3">
+				<div class="col">
+					<h3 class="text-white">Mayank Kumar Singh</h3>
+				</div>
+			</div>
+
+			<div class="row mt-3 mb-4 text-center">
+				<div class="col-xl-6">
+					<div class="row">
+						<div class="col">
+							<a class="nav-link onHoverDark activeCustom" href="/" *ngIf="active === '/home'">Home</a>
+							<a class="nav-link onHoverDark inactiveCustom" href="/" *ngIf="active !== '/home'">Home</a>
+						</div>
+						<div class="col">
+							<a class="nav-link onHoverDark activeCustom" href="/profile" *ngIf="active === '/profile'">Profile</a>
+							<a class="nav-link onHoverDark inactiveCustom" href="/profile" *ngIf="active !== '/profile'">Profile</a>
+						</div>
+						<div class="col">
+							<a class="nav-link onHoverDark activeCustom" href="/research" *ngIf="active === '/research'">Research</a>
+							<a class="nav-link onHoverDark inactiveCustom" href="/research" *ngIf="active !== '/research'">Research</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-6">
+					<div class="row">
+						<div class="col">
+							<a class="nav-link onHoverDark activeCustom" href="/latest" *ngIf="active === '/latest'">Latest</a>
+							<a class="nav-link onHoverDark inactiveCustom" href="/latest" *ngIf="active !== '/latest'">Latest</a>
+						</div>
+						<div class="col">
+							<a class="nav-link onHoverDark activeCustom" href="/projects" *ngIf="active === '/projects'">Project</a>
+							<a class="nav-link onHoverDark inactiveCustom" href="/projects" *ngIf="active !== '/projects'">Project</a>
+						</div>
+						<div class="col">
+							<a class="nav-link onHoverDark activeCustom" href="/contact" *ngIf="active === '/contact'">Contact</a>
+							<a class="nav-link onHoverDark inactiveCustom" href="/contact" *ngIf="active !== '/contact'">Contact</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="col-lg-4 pt-5">
+			<div class="row py-5 px-4 bg-light mb-5 shadow mx-1">
+				<div class="col text-center">
+					<img class="pb-5" src="assets/images/profileCircular512X512.png" width="100%" style="max-width: 200px">
+					<p>
+						I am a student at IIT Bombay studying Electrical Engineering, currently in 4th and final year. I have been intrigued by machine learning since my high school and have a vision to strive to understand the complex decision process of humans and implement it with the technologies we have to push humans one step further. <br>
+	 					<br>
+						I started my journey with Hyper Spectral Images for cancer detection, pixel level segmentation and since have worked on speech source separation, text-detection and recognition, Quant algoroithms and Reinforcement Learning. It has been a great 3 years exploring this field.<br>
+					</p>
+				</div>
+			</div>
+
+			<div class="row pt-5 pb-3 pl-3 bg-light mb-5 shadow mx-1">
+				<div class="col">
+					<h5 class="pb-2"><b>Contact Information</b></h5>
+					<p>
+						<a href="mailto:mayank2220singh@gmail.com"><strong>Gmaild: </strong> mayank2220singh@gmail.com</a><br><br>
+						<a href="https://www.linkedin.com/in/mayank-singh-a37713155/"><strong>LinkedIn</strong> </a><br><br>
+						<a href="https://scholar.google.com/citations?hl=en&authuser=1&user=ky_QjGgAAAAJ"><strong>Good Scholar</strong> </a><br><br>
+						<a href="https://github.com/mayank-git-hub"><strong>GitHub</strong> </a><br><br>
+						<a href="https://medium.com/@mayank2220singh"><strong>Medium</strong> </a><br><br>
+						<a href="tel:+91 84549 51729"><strong>Call: +91 84549 51729</strong> </a>
+					</p>
+				</div>
+			</div>
+    </div>
+  </div>
+</div>
