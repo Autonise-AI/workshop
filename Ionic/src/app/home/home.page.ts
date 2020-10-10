@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵɵpureFunction2 } from '@angular/core';
 import { Platform } from '@ionic/angular';
 
 @Component({
@@ -10,6 +10,7 @@ export class HomePage implements OnInit {
 
   categories = [];
   clothes = [];
+  x = 0;
   public isDesktop = false;
   constructor(private platform: Platform) { }
 
@@ -27,6 +28,18 @@ export class HomePage implements OnInit {
       { name: 'Men\'s Hoodie', price: '1999', imgUrl: '/assets/clothes/hoodie.jpg' },
       { name: 'Women\'s Skirt', price: '2599', imgUrl: '/assets/clothes/skirt.jpg' }
     ];
+
+    this.func1();
+    this.func2();
+    console.log(this.x);
+  }
+
+  func1(){
+    this.x = 1;
+  }
+
+  func2(){
+    this.x = 2;
   }
 
 }
