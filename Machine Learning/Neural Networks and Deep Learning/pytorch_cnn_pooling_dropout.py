@@ -4,6 +4,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from torch.nn import functional as F
 from torchvision import datasets, transforms
 
 
@@ -12,27 +13,28 @@ class Net(nn.Module):
 
         super(Net, self).__init__()
 
-        # 2 Layers
-        self.fc1 = nn.Linear(784, 100)
-        self.fc2 = nn.Linear(100, 10)
+        self.conv1 = nn.Conv2d(1, 32, 3, 1)
+        self.conv2 = nn.Conv2d(32, 64, 3, 1)
+        self.dropout1 = nn.Dropout(0.25)
+        self.dropout2 = nn.Dropout(0.5)
+        self.fc1 = nn.Linear(9216, 128)
+        self.fc2 = nn.Linear(128, 10)
 
         # xavier_initialization
 
     def forward(self, x):
-        # x - shape = [64, 784]
-        # Layer 1
-        l1 = self.fc1(x)  # l1 - shape = [64, 100]
-
-        # Activation 1
-        l1_a1 = torch.sigmoid(l1)  # l1_a1 - shape = [64, 100]
-
-        # Layer 2
-        l2 = self.fc2(l1_a1)  # l2 - shape = [64, 10]
-
-        # Activation 2
-        l2_a2 = torch.sigmoid(l2)  # l2_a2 - shape = [64, 10]
-        
-        return l2_a2
+        x = self.conv1(x)
+        x = F.relu(x)
+        x = self.conv2(x)
+        x = F.relu(x)
+        x = F.max_pool2d(x, 2)
+        x = self.dropout1(x)
+        x = torch.flatten(x, 1)
+        x = self.fc1(x)
+        x = F.relu(x)
+        x = self.dropout2(x)
+        x = self.fc2(x)
+        return x
 
 
 def train(model, use_cuda, train_loader, optimizer, epoch):
@@ -43,34 +45,13 @@ def train(model, use_cuda, train_loader, optimizer, epoch):
 
         # Converting the target to one-hot-encoding from categorical encoding
         # Converting the data to [batch_size, 784] from [batch_size, 1, 28, 28]
-
-        # import matplotlib.pyplot as plt
-
-        # print(target[0], target[1], data.shape, data[0].shape, data[0, 0].shape, data.dtype)
-
-        # plt.imshow(data[1, 0])
-        # plt.show()
-        # exit(0)
             
-        y_onehot = torch.zeros([target.shape[0], 10])  # Zero vector of shape [64, 10]
-        y_onehot[range(target.shape[0]), target] = 1
-
-        # print(target[0], y_onehot[0])
-        # print(target[1], y_onehot[1])
-        # print(target[2], y_onehot[2])
-        # exit(0)
-
-        # print(data.shape)
-        data = data.view([data.shape[0], 784])
-        # print(data.shape)
-        # exit(0)
-
         if use_cuda:
-            data, y_onehot = data.cuda(), y_onehot.cuda()  # Sending the data to the GPU
+            data, target = data.cuda(), target.cuda()  # Sending the data to the GPU
 
         optimizer.zero_grad()  # Setting the cumulative gradients to 0
         output = model(data)  # Forward pass through the model
-        loss = torch.mean((output - y_onehot)**2)  # Calculating the loss
+        loss = F.cross_entropy(output, target)  # Calculating the loss
         loss.backward()  # Calculating the gradients of the model. Note that the model has not yet been updated.
         optimizer.step()  # Updating the model parameters. Note that this does not remove the stored gradients!
 
@@ -93,17 +74,13 @@ def test(model, use_cuda, test_loader):
             # Converting the target to one-hot-encoding from categorical encoding
             # Converting the data to [batch_size, 784] from [batch_size, 1, 28, 28]
 
-            y_onehot = torch.zeros([target.shape[0], 10])
-            y_onehot[range(target.shape[0]), target] = 1
-            data = data.view([data.shape[0], 784])
-
             if use_cuda:
-                data, target, y_onehot = data.cuda(), target.cuda(), y_onehot.cuda()  # Sending the data to the GPU
+                data, target = data.cuda(), target.cuda()  # Sending the data to the GPU
 
             # argmax([0.1, 0.2, 0.9, 0.4]) => 2
             # output - shape = [1000, 10], argmax(dim=1) => [1000]
             output = model(data)  # Forward pass
-            test_loss += torch.sum((output - y_onehot)**2)  # sum up batch loss
+            test_loss += F.cross_entropy(output, target, reduction='sum')  # sum up batch loss
             pred = output.argmax(dim=1, keepdim=True)  # get the index of the maximum output
             correct += pred.eq(target.view_as(pred)).sum().item()  # Get total number of correct samples
 
@@ -157,7 +134,7 @@ def main():
     if use_cuda:
         model = model.cuda()  # Put the model weights on GPU
 
-    optimizer = optim.SGD(model.parameters(), lr=10)  # Choose the optimizer and the set the learning rate
+    optimizer = optim.SGD(model.parameters(), lr=0.1)  # Choose the optimizer and the set the learning rate
 
     for epoch in range(1, 10 + 1):
         train(model, use_cuda, train_loader, optimizer, epoch)  # Train the network
