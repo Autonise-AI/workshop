@@ -38,6 +38,5 @@ Numpy -
 Image viewing - 
 
 	Matplotlib.pyplot
-
 	Normal Plots
 	reading images
