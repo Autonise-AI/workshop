@@ -13,8 +13,8 @@ class Net(nn.Module):
         super(Net, self).__init__()
 
         # 2 Layers
-        self.fc1 = nn.Linear(784, 1000)
-        self.fc2 = nn.Linear(1000, 10)
+        self.fc1 = nn.Linear(784, 100)
+        self.fc2 = nn.Linear(100, 10)
 
     def forward(self, x):
 
@@ -123,8 +123,8 @@ def main():
     dataset1 = datasets.MNIST('../data', train=True, download=True, transform=transform)  # Get the train dataset
     dataset2 = datasets.MNIST('../data', train=False, transform=transform)  # Get the test dataset
 
-    dataset1.data = dataset1.data[0:1000]
-    dataset1.targets = dataset1.targets[0:1000]
+    dataset1.data = dataset1.data[0:5000]
+    dataset1.targets = dataset1.targets[0:5000]
     print(dataset1.data.shape, dataset1.targets.shape)
 
     train_loader = torch.utils.data.DataLoader(dataset1, num_workers=6, shuffle=True, batch_size=64)  # Get the train dataloader

@@ -27,6 +27,8 @@ class Net(nn.Module):
         # Layer 2
         x = self.fc2(x)
 
+        # x = torch.sigmoid(x)
+
         return x
 
 

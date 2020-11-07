@@ -4,12 +4,14 @@ tinyurl.com/bbpython
 Will be great if you approach the programs in the same order
 
 Basic Python Functions - 
-
+	
+	hello_world
+	create_variables
 	sys.argv
 	Lists
 	If - elif - else
 	For loop
-	Functions - (Multiple Returns, overloading)
+	Functions - (Multiple Returns)
 	Opening files
 
 	Maps(Dictionaries)

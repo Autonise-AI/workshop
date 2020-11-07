@@ -1,14 +1,15 @@
 import numpy as np
 
-class firsttime():
+
+class firstTime:
 
 	def __init__(self, x=1, y=1):
 
-		# This is the constructor and is invoked when the object is made
+		# This is the constructor and is invoked when the object is created
 
 		self.x = x
 		self.y = y
-		self.z = np.arange(100)
+		self.z = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 	def __str__(self):
 
@@ -17,23 +18,30 @@ class firsttime():
 		return str(self.x)+' '+str(self.y)
 
 	def __getitem__(self, index):
-
 		# When s[0] is done then __getitem__ is called with index=0
 
 		return self.z[index]
 
-	def letssum(self):
+	def __len__(self):
+
+		# When s[0] is done then __getitem__ is called with index=0
+
+		return 1000
+
+	def letsSum(self):
 
 		# A function of the class
 
-		return np.sum(self.z)
+		return sum(self.z)
 
 
-s = firsttime(x=10, y=10)
+s = firstTime(x=10, y=10)
 
 print(s)
 
 for i in range(10):
 	print(s[i])
 
-print(s.letssum())
+print(s.letsSum())
+
+print('Length of s: ', len(s), 'Same as: ', s.__len__())

@@ -14,7 +14,7 @@ class Net(nn.Module):
 
         # 2 Layers
         self.fc1 = nn.Linear(784, 100)
-        self.drop_out = nn.Dropout(0.99)
+        self.drop_out = nn.Dropout(0.5)
         self.fc2 = nn.Linear(100, 10)
 
     def forward(self, x):
