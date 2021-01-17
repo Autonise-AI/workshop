@@ -1,0 +1,9 @@
+<my-header></my-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 pt-5" *ngFor="let card of cardContent">
+      <app-card [imageSource]="card.imageSource" [title]="card.title" [content]="card.content"></app-card>
+    </div>
+  </div>
+</div>

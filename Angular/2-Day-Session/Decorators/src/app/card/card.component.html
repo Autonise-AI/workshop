@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col p-0">
+            <img [src]="imageSource" style="width: 100%;">
+            <div class="shadow p-3">
+                <p class="pt-2" style="font-size: 24px;">{{title}}</p>
+                <p>
+                    {{content}}
+                </p>
+                <button class="w-100 btn btn-primary" (click)="SendValue()">Send Value To Parent</button>
+            </div>
+        </div>
+    </div>
+</div>

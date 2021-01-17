@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" [ngClass]="adminService.admin?'navbar-dark bg-dark':'navbar-light bg-light'">
+  <!-- condition?execute this if true:otherwise execute this -->
+    <a class="navbar-brand" href="#" (click)="switchAdmin()">Switch Admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" *ngFor="let link of links">
+          <a class="nav-link" [href]="link.link">{{link.title}}</a>
+        </li>
+
+        <li class="nav-item" *ngIf="adminService.admin">
+          <a class="nav-link" href="admin">Admin</a>
+        </li>
+
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchValue" [(ngModel)]="searchValue">
+        <button class="btn btn-outline-success my-2 my-sm-0" [ngStyle]="{'background-color': adminService.admin? 'red':'blue'}" type="submit" (click)="search()">{{searchValue}}</button>
+      </form>
+    </div>
+  </nav>

@@ -1,0 +1,14 @@
+<my-header></my-header>
+
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-12 text-center p-3">
+      <h1>{{title}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4" *ngFor="let card of cardContent">
+      <app-card [imageSource]="card.imageSource" [title]="card.title" [content]="card.content" (myOutput) ="ProcessChildData($event)"></app-card>
+    </div>
+  </div>
+</div>
