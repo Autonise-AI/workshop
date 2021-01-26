@@ -44,26 +44,10 @@ def train(model, use_cuda, train_loader, optimizer, epoch):
         # Converting the target to one-hot-encoding from categorical encoding
         # Converting the data to [batch_size, 784] from [batch_size, 1, 28, 28]
 
-        # import matplotlib.pyplot as plt
-
-        # print(target[0], target[1], data.shape, data[0].shape, data[0, 0].shape, data.dtype)
-
-        # plt.imshow(data[1, 0])
-        # plt.show()
-        # exit(0)
-            
         y_onehot = torch.zeros([target.shape[0], 10])  # Zero vector of shape [64, 10]
         y_onehot[range(target.shape[0]), target] = 1
 
-        # print(target[0], y_onehot[0])
-        # print(target[1], y_onehot[1])
-        # print(target[2], y_onehot[2])
-        # exit(0)
-
-        # print(data.shape)
         data = data.view([data.shape[0], 784])
-        # print(data.shape)
-        # exit(0)
 
         if use_cuda:
             data, y_onehot = data.cuda(), y_onehot.cuda()  # Sending the data to the GPU
@@ -147,9 +131,9 @@ def main():
     dataset1 = datasets.MNIST('../data', train=True, download=True, transform=transform)  # Get the train dataset
     dataset2 = datasets.MNIST('../data', train=False, transform=transform)  # Get the test dataset
 
-    # Get the train dataloader
+    # Get the train data-loader
     train_loader = torch.utils.data.DataLoader(dataset1, num_workers=6, shuffle=True, batch_size=64)
-    # Get the test dataloader
+    # Get the test data-loader
     test_loader = torch.utils.data.DataLoader(dataset2, num_workers=6, shuffle=False, batch_size=1000)
 
     model = Net()  # Get the model
@@ -163,9 +147,12 @@ def main():
         train(model, use_cuda, train_loader, optimizer, epoch)  # Train the network
         test(model, use_cuda, test_loader)  # Test the network
 
-    torch.save(model.state_dict(), "mnist_cnn.pt")
+    torch.save(model.state_dict(), "mnist.pt")
+
+    model.load_state_dict(torch.load('mnist.pt'))
 
     # Loading a saved model - model.load_state_dict(torch.load('mnist_cnn.pt'))
 
 
-main()
+if __name__ == '__main__':
+    main()

@@ -3,20 +3,28 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 
-const routes: Routes = [{
-  path: 'home',
-  component: HomeComponent
-},{
-  path: '',
-  redirectTo: 'home',
-  pathMatch: 'full' // prefix
-},{
-  path: 'about',
-  component: AboutComponent
-},{
-  path: '**',
-  component: HomeComponent
-}];
+// home1
+
+const routes: Routes = [
+  {
+    path: 'home',
+    pathMatch: 'prefix',
+    component: HomeComponent
+  },
+  {
+    path: 'hom',
+    redirectTo: 'home',
+    pathMatch: 'prefix' // prefix
+  },
+  {
+    path: 'about',
+    component: AboutComponent
+  },
+  // {
+  //   path: '**',
+  //   component: HomeComponent
+  // }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

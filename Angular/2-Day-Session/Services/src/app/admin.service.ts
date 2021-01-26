@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AdminService {
 
-  admin = true;
+  public admin = true;
 
   constructor() { }
 }
