@@ -2,7 +2,7 @@ import numpy as np
 
 # Basics of numpy
 
-x = np.zeros([10])  # Creates an array of size 10 initialised with the value 0
+x = np.zeros([10, 10])  # Creates an array of size 10 initialised with the value 0
 
 y = np.ones([10])  # Creates an array of size 10 initialised with the value 1
 
