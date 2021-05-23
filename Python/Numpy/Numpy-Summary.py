@@ -3,20 +3,23 @@ import numpy as np
 # Constant Value Initialization
 
 x = np.zeros([100, 100])  # Initialize a 2-D array of zeros of dtype - np.float64
-x = np.zeros_like(x)  # Initialize a 2-D array with zeros having dtype and shape similar to given array
+y = np.array([1, 2, 3])
+x = np.zeros_like(y)  # Initialize a 2-D array with zeros having dtype and shape similar to given array
+
 x = np.ones([100, 100])  # Initialize a 2-D array of ones of dtype - np.float64
 x = np.ones_like(x)  # Initialize a 2-D array with ones having dtype and shape similar to given array
 
 # Increasing Value Iterator Generation
 x = np.arange(10, 100, 5)  # Initialize a iterator which generates values starting from 10 till 10 with a step size of 5
-
 # Random Distribution sampling
 x = np.random.uniform(low=0, high=1, size=(100, 100))  # Generate random numbers from the uniform distribution
 x = np.random.randn(100, 100)  # Generate random numbers from the normal gaussian distribution
-x = np.random.normal(loc=0, scale=1, size=(100, 100))  # Generate random numbers from the gaussian distribution
+x = np.random.normal(loc=0.5, scale=10, size=(100, 100))  # Generate random numbers from the gaussian distribution
 
-
-aranged_100 = np.arange(0, 100, 1).reshape([10, 10])
+aranged_100 = np.arange(0, 100).reshape([10, 10])
+"""
+np.arange(0, 100) -> [0, 1, 2, ..., 98, 99]
+"""
 """
 [[ 0  1  2  3  4  5  6  7  8  9]
  [10 11 12 13 14 15 16 17 18 19]
@@ -30,7 +33,6 @@ aranged_100 = np.arange(0, 100, 1).reshape([10, 10])
  [90 91 92 93 94 95 96 97 98 99]]
 """
 
-
 cropped_sliced = aranged_100[5:10, 0:5]
 """
 [[50 51 52 53 54]
@@ -40,7 +42,7 @@ cropped_sliced = aranged_100[5:10, 0:5]
  [90 91 92 93 94]]
 """
 
-# print(cropped_sliced + 10)
+print(cropped_sliced + 10)
 
 """
 [[ 60  61  62  63  64]
@@ -60,4 +62,8 @@ print(x)
  [0. 0. 1. 0. 0.]
  [0. 0. 0. 1. 0.]
  [0. 0. 0. 0. 1.]]
+"""
+
+"""
+    [H, W, 3(RGB)/4(RGBA)/1(L)], [H, W]
 """
