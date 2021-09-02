@@ -53,13 +53,12 @@ class customDatasetClass(Dataset):
                 self.allTargets.append(targetNo)
 
         self.transforms = torchvision.transforms.Compose([
-            torchvision.transforms.RandomCrop((256, 256)),
             torchvision.transforms.ToTensor()
         ])
 
     def __getitem__(self, item):
 
-        image = Image.open(self.allImagePaths[item]).convert('RGB')
+        image = Image.open(self.allImagePaths[item]).convert('RGB').resize((64, 64))
         target = self.allTargets[item]
 
         image = self.transforms(image)
